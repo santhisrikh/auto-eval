@@ -1,0 +1,17 @@
+{
+  "name": "coding4-auto-eval",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^8.5.0",
+    "cypress-localstorage-commands": "^1.7.0"
+  }
+}
