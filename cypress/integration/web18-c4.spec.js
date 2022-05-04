@@ -139,9 +139,10 @@ newdata.forEach((ele) => {
     });
     describe("calc score", () => {
       it("calc score", { retries: 1 }, () => {
+        acc_score = Math.floor(acc_score)
         cy.writeFile(
           "w18-scores.txt",
-          `\n${ele.username}, ${ele.name} ${ele.submission_link}, ${acc_score}`,
+          `\n${ele.username}, ${ele.name}, ${ele.submission_link}, ${acc_score}`,
           {
             flag: "a+",
           }
