@@ -1,7 +1,7 @@
 // https://chic-kelpie-80cd26.netlify.app/
-import data from "../fixtures/web17-c4.json";
+import data from "../fixtures/web17-c4-diff.json";
 import "cypress-localstorage-commands";
-let newdata = data.filter((ele, index) => index % 2 == 0);
+let newdata = data.filter((ele, index) => index % 2 == 1);
 
 import "cypress-localstorage-commands";
 
@@ -21,7 +21,7 @@ function c4TestCase() {
         cy.saveLocalStorage();
       });
       let url = ele.submission_link;
-      //   urls.forEach((url) => {
+        // newdata.forEach((url) => {
       if (url.charAt(url.length - 1) != "/") {
         url = url + "/";
       }
@@ -121,7 +121,6 @@ function c4TestCase() {
         cy.wait(500);
         cy.url().should("include", "/search.html");
         cy.get("#results").children().should("have.length", 20);
-
         cy.then(() => {
           acc_score += 1;
         });
@@ -129,8 +128,10 @@ function c4TestCase() {
 
       describe("calc score", () => {
         it("calc score", { retries: 1 }, () => {
+                  acc_score = Math.ceil(acc_score)
+
           cy.writeFile(
-            "w17-scores.txt",
+            "w17-scores-diff.txt",
             `\n${ele.username}, ${ele.name} ,${ele.submission_link}, ${acc_score}`,
             {
               flag: "a+",
